@@ -1,9 +1,9 @@
 # Gcov example
 Gcov example for library and/or executable.
 
-### Compilation
+## Compilation
 
-## Library compilation
+### Library compilation
 
 ```
 $ cd lib
@@ -13,7 +13,7 @@ $ cmake ..
 $ make
 ```
 
-## Executable compilation
+### Executable compilation
 
 ```
 $ cd exe
