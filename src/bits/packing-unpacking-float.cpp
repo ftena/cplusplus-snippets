@@ -1,9 +1,12 @@
 #include <iostream>
 #include <bitset>
+#include <cstring>
+#include <stdint.h>
+#include <climits>
 
 int main(int argc, char** argv)
 {
-	// Working with bitsets
+	// Working with bitsets: setting 1's in some positions
 	{
 		std::bitset<32> foo_bitset;
 		float result;
