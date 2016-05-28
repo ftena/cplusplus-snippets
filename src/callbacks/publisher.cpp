@@ -1,7 +1,6 @@
 #include "publisher.h"
-#include "subscriber.h"
 
-Publisher::Publisher(Subscriber *sub): sub_(sub)
+Publisher::Publisher()
 {
 
 }
@@ -11,7 +10,7 @@ void Publisher::sendMessage(std::string message, void (*cb)(std::string))
     cb(message);
 }
 
-void Publisher::sendMessage(std::string message, void (*cb)(std::string, void*), void* obj)
+void Publisher::sendMessage(std::string message, void (*cb)(void*, std::string), void* obj)
 {
-    cb(message, obj);
+    cb(obj, message);
 }

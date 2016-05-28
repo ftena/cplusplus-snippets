@@ -6,7 +6,7 @@
 int main()
 {
     std::unique_ptr<Subscriber> s(new Subscriber(.5));
-    Publisher p(s.get());
+    Publisher p;
 
     p.sendMessage("your message!", &Subscriber::receiveData);
     p.sendMessage("your message!", &Subscriber::receiveObj, s.get());

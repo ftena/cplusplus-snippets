@@ -4,18 +4,13 @@
 #ifndef PUBLISHER_H
 #define PUBLISHER_H
 
-class Subscriber;
-
 class Publisher
 {
 public:
-    Publisher(Subscriber* sub);
+    Publisher();
 
     void sendMessage(std::string message, void (*cb)(std::string));
-    void sendMessage(std::string message, void (*cb)(std::string, void*), void* obj);
-
-private:
-    std::unique_ptr<Subscriber> sub_;
+    void sendMessage(std::string message, void (*cb)(void*, std::string), void* obj);
 };
 
 #endif // PUBLISHER_H
