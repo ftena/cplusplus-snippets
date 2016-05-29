@@ -1,3 +1,9 @@
+/*
+ Instances of std::function can store, copy, and invoke any Callable target
+ -- functions, lambda expressions, bind expressions, or other function objects,
+ as well as pointers to member functions and pointers to data members.
+*/
+
 #include <functional>
 #include <iostream>
 
@@ -24,10 +30,12 @@ int main()
     // store a free function
     std::function<void(int)> f_display = print_num;
     f_display(-9);
+    // can also be: std::function<void(int)> f_display = &print_num;
 
     /* In C++98 */
     void (*f_display2) (int) = &print_num;
     f_display2(-9);
+    // can also be: void (*f_display2) (int) = print_num;
 
     // store a lambda
     std::function<void()> f_display_42 = []() { print_num(42); };
