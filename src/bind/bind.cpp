@@ -9,6 +9,11 @@ int f(int a, int b)
     return a + b;
 }
 
+int g(int a)
+{
+    return a;
+}
+
 int main () {
 	int numbers[] = {10,20,30,40,50,10};
 	int cx;
@@ -24,7 +29,13 @@ int main () {
 		/*
 			ptr_fun: returns a function object that encapsulates function f.
 		*/
-		cout << "f(5," << x << ") = " << bind1st(ptr_fun(f), 5)(x) << endl;
+        /*
+         * The function object returned by bind1st has its operator() defined
+         * such that it takes only one argument. This argument is used to
+         * call binary function object op with x as the fixed value for
+         * the first argument.
+         */
+		cout << "f(5," << x << ") = " << bind1st(ptr_fun(f), 5)(x) << endl; // f(5, x)
 	}
 
 	// int (*f_pointer) (int a, int b);
