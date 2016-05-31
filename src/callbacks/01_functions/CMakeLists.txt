@@ -1,5 +1,5 @@
 ## application name
-set( APP_NAME "passing2function" )
+set( APP_NAME "functions")
 
 aux_source_directory(. SRC_LIST)
 add_executable(${APP_NAME} ${SRC_LIST})

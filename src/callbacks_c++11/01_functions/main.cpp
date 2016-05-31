@@ -14,27 +14,26 @@ int foo_2 (int x, int y) { return 9*x + y; }
 
 int main()
 {
-    int value = 5;
+    int a = 2;
 
     /* Function pointers */
-    std::cout << stdf_foobar(value, &foo) << std::endl;
-    // can also be: stdf_foobar(5, foo)
+    std::cout << stdf_foobar(a, &foo) << std::endl; // 6 ( 2 + (2+2) )
+    // can also be: stdf_foobar(2, foo)
 
     /* Lambda expressions */
     /* An unnamed closure from a lambda expression can be
      * stored in a std::function object:
      */
     int capture_value = 3;
-    std::cout << stdf_foobar(value,
-                             [capture_value](int param) -> int { return 7 + capture_value + param; })
+    std::cout << stdf_foobar(a,
+                             [capture_value](int param) -> int { return 7 + capture_value * param; })
               << std::endl;
-    // result: 20 ==  value + (7 + capture_value + value) == 5 + (7 + 3 + 5)
+    // result: 15 ==  value + (7 * capture_value * value) == 2 + (7 + 3 * 2)
 
     /* std::bind expressions */
     /* The result of a std::bind expression can be passed.
      * For example by binding parameters to a function pointer call:
-     */
-    int a = 2;
+     */    
     int b = stdf_foobar(a, std::bind(foo_2, _1, 3));
     std::cout << b << std::endl;
     // b == 23 == 2 + ( 9*2 + 3 )

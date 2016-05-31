@@ -45,7 +45,6 @@ int main()
     /* ******************** */
     /* C++11 */
     /* ******************** */
-
     // using function pointer still possible
     int b[5] = {1, 2, 3, 4, 5};
     stdf_tranform_every_int(&b[0], 5, double_int);
