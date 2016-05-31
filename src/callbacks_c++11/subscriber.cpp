@@ -18,3 +18,8 @@ float Subscriber::f()
 {
     return f_;
 }
+
+void Subscriber::f(float f)
+{
+    f_ = f;
+}

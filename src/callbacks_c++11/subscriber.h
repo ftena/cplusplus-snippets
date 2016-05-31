@@ -11,8 +11,10 @@ public:
 
     //callback
     void receiveData(std::string data);
-private:
     float f();
+    void f(float f);
+
+private:
     float f_;
 };
 
