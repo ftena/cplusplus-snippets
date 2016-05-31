@@ -14,6 +14,7 @@ int main()
     p.sendMessage("your message!", std::bind(&Subscriber::receiveData, r.get(), _1));
     p.sendMessage("your message!", std::bind(&Subscriber::receiveData, &s, _1));
 
+    // update float value
     s.f(3.5);
 
     // store a call to a member function and object ptr
@@ -23,6 +24,10 @@ int main()
     // the same...
     std::function<void(std::string)> bound_member_fn2 = std::bind(&Subscriber::receiveData, &s, _1);
     bound_member_fn2("I am also free!");
+
+    // store a call to a member function
+    std::function<void(Subscriber&, std::string)> s_receive_data = &Subscriber::receiveData;
+    s_receive_data(s, "Me too!");
 
     return 0;
 }
