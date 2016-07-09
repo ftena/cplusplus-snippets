@@ -14,6 +14,15 @@ void Subscriber::receiveData(std::string data)
               << std::endl;
 }
 
+void Subscriber::receiveDataWithValue(std::string data, int v)
+{
+    std::cout << "Subscriber::receiveObj ---"
+              << " data : " << data
+              << " f_ : " << f()
+              << " value : " << v
+              << std::endl;
+}
+
 float Subscriber::f()
 {
     return f_;

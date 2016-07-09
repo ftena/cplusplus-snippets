@@ -11,8 +11,10 @@ int main()
     Subscriber s(2.5);
     Publisher p;
 
-    p.sendMessage("your message!", std::bind(&Subscriber::receiveData, r.get(), _1));
-    p.sendMessage("your message!", std::bind(&Subscriber::receiveData, &s, _1));
+    p.sendMessage("first message", std::bind(&Subscriber::receiveData, r.get(), _1));
+    p.sendMessage("second message", std::bind(&Subscriber::receiveData, &s, _1));
+    p.sendMessageWithValue("third message & value", 47, std::bind(&Subscriber::receiveDataWithValue, &s, _1, _2));
+    p.sendMessageWithValue("xxx", 0, std::bind(&Subscriber::receiveDataWithValue, &s, "fixed!", 999));
 
     // update float value
     s.f(3.5);
@@ -27,7 +29,7 @@ int main()
 
     // store a call to a member function
     std::function<void(Subscriber&, std::string)> s_receive_data = &Subscriber::receiveData;
-    s_receive_data(s, "Me too!");
+    s_receive_data(s, "Me too");
 
     return 0;
 }

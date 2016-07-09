@@ -11,6 +11,7 @@ public:
 
     //callback
     void receiveData(std::string data);
+    void receiveDataWithValue(std::string data, int v);
     float f();
     void f(float f);
 
