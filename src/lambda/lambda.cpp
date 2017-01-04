@@ -31,7 +31,7 @@ int main () {
     // its predicate function with an argument of type *InputIterator. In our example,
     // *InputIterator is accountant. Hence, the lambda’s parameter is const
     // accountant&. The find_if() algorithm invokes the lambda expression for every
-    // accountant.
+    // accountant in emps.
 
     return 0;
 }
