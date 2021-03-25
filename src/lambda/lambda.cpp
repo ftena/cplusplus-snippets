@@ -6,7 +6,7 @@
 
 struct Accountant {
 public:
-    salary() const { return salary_; }
+    double salary() const { return salary_; }
 
     std::string name_;
     double salary_;
