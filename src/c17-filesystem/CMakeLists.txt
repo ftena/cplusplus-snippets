@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.13)
+project(c17-filesystem LANGUAGES CXX)
+aux_source_directory(. SRC_LIST)
+add_executable(${PROJECT_NAME} ${SRC_LIST})
+target_link_libraries(${PROJECT_NAME} stdc++fs)
+set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 17)
