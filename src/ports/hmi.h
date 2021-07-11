@@ -3,10 +3,11 @@
 
 #include "icommand.h"
 
+// In this example, the HMI works with commands
 class HMI
 {
 public:
-   explicit HMI(ICommand& cmdRef):cmd(cmdRef){}
+   explicit HMI(ICommand& cmdRef): cmd(cmdRef) {}
    void startRequested() { cmd.operational(); }
 private:
    ICommand& cmd; // association to ICommand Interface

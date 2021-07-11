@@ -4,6 +4,7 @@
 #include "icommand.h"
 #include "icontroller.h"
 
+// It coordinates the command (Port#1) and controller (Port#2)
 class SystemCoordinator
 {
 	public:
@@ -19,8 +20,8 @@ class SystemCoordinator
 				virtual void idle();
 		};
 
-	Port1 p1;
-	Port2 p2;
+	Port1 p1; // command
+	Port2 p2; // controller
 };
 
 #endif // SYSTEM_COORDINATOR_H_
