@@ -43,7 +43,7 @@ int main (int argc, char *argv[])
 
     struct timeval detail_time;  
     gettimeofday(&detail_time,NULL);  
-    printf("%d %d",   
+    printf("%li %li \n",   
     detail_time.tv_usec /1000,  /* milliseconds */  
     detail_time.tv_usec); /* microseconds */  
 
