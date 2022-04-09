@@ -13,7 +13,7 @@ int main (int argc, char *argv[])
 
      time_t ltime;  
      //int timestamp = 1246962445;
-     int timestamp = 10;
+     const time_t timestamp = 10;
      struct tm *Tm;  
    
 /* time: Get the current time (number of seconds from the epoch) from the system clock. Stores that value in timer. If timer is null, the value is not stored, but it is still returned by the function. */
@@ -28,7 +28,7 @@ int main (int argc, char *argv[])
      cout << endl << Tm->tm_wday << " " << Tm->tm_mday << "/" << Tm->tm_mon+1 << "/" << Tm->tm_year+1900 << " ";
      cout << Tm->tm_hour << ":" << Tm->tm_min << ":" << Tm->tm_sec << endl;
  
-     Tm=gmtime((const time_t*) &timestamp); 
+     Tm=gmtime(&timestamp); 
      cout << endl << Tm->tm_wday << " " << Tm->tm_mday << "/" << Tm->tm_mon+1 << "/" << Tm->tm_year+1900 << " ";
      cout << Tm->tm_hour << ":" << Tm->tm_min << ":" << Tm->tm_sec << endl;
    
@@ -46,5 +46,6 @@ int main (int argc, char *argv[])
     printf("%d %d",   
     detail_time.tv_usec /1000,  /* milliseconds */  
     detail_time.tv_usec); /* microseconds */  
-     
+
+    return 0;
 }
