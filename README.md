@@ -7,9 +7,9 @@ You can compile most of snippets using 'make <name-of-file-without-extension>'
 
 For example:
 
- $ make ascii
- $ make sort
- $ make time
+        $ make ascii
+        $ make sort
+        $ make time
 
 * Some snippets have a makefile and should be used to compile the code.
 * Use cmake if available
