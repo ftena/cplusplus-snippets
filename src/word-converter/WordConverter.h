@@ -8,16 +8,19 @@
 class WordConverter
 {
 public:
-    WordConverter();
+    WordConverter(const std::string &inputString);
     ~WordConverter();
-    void getNumbersFromString(const std::string &inputString, std::vector<std::string> &out);
+    void getNumbersFromString(std::vector<std::string> &out);
     double getValue(const std::vector<std::string> &inputString);
 private:
+    std::string originalInputString;
+    std::string formmatedOutputString;
     std::map<std::string, double> textAsNumbers;
-    const char hyphen = '-';
-    const char whitespace = ' ';
-    const int onehundred = 100;
-    const int onethousand = 1000;
+    static const char hyphen;
+    static const char whitespace;
+    static const char dollar;
+    static const int onehundred;
+    static const int onethousand;
 };
 
 #endif // WORDCONVERTER_H

@@ -7,7 +7,6 @@
 
 int main()
 {
-    WordConverter wordConverter;
     std::string const& inputFile = "../inputfile.txt";
     std::fstream fileStream(inputFile, std::ios::in);
     std::string fileLine;
@@ -19,10 +18,11 @@ int main()
 
     while(getline(fileStream, fileLine))
     {
-        std::cout << "input : " << fileLine << '\n';
+        std::cout << "input : " << fileLine << std::endl;
 
+        WordConverter wordConverter(fileLine);
         std::vector<std::string> out;
-        wordConverter.getNumbersFromString(fileLine, out);
+        wordConverter.getNumbersFromString(out);
         std::cout << "output : " << wordConverter.getValue(out) << '\n';
 
     }

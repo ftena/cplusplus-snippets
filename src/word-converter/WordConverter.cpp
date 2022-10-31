@@ -1,11 +1,21 @@
 #include <iostream>
 #include <algorithm>
 #include <sstream>
+#include <regex>
 
 #include "WordConverter.h"
 
-WordConverter::WordConverter()
+const char WordConverter::hyphen = '-';
+const char WordConverter::whitespace = ' ';
+const char WordConverter::dollar = '$';
+const int WordConverter::onehundred = 100;
+const int WordConverter::onethousand = 1000;
+
+WordConverter::WordConverter(const std::string &inputString)
 {
+    originalInputString = inputString;
+    formmatedOutputString = inputString;
+
     textAsNumbers =
     {{"one",1},
      {"two",2},
@@ -44,30 +54,39 @@ WordConverter::~WordConverter()
 {
 }
 
-void WordConverter::getNumbersFromString(const std::string &inputString, std::vector<std::string> &out)
+void WordConverter::getNumbersFromString(std::vector<std::string> &out)
 {
-    std::string in = inputString;
+    std::string in = originalInputString;
     in.erase(in.end()-1); // erase the last dot
 
     // replace hyphen (-) character if they are used
-    const char hyphen = '-';
-    const char whitespace = ' ';
     std::replace(in.begin(), in.end(), hyphen, whitespace);
 
     std::stringstream stream(in); // get the string as a stream
 
     std::string str;
     while (std::getline(stream, str, ' ')) {
-        if(textAsNumbers.find(str)!=textAsNumbers.end()) {
+        if(textAsNumbers.find(str) != textAsNumbers.end()) {
             out.push_back(str);
+
         }
     }
+
+    /*
+    std::string result;
+    std::regex e();
+    std::regex_replace (std::back_inserter(result),
+            formmatedOutputString.begin(),
+            formmatedOutputString.end(),
+            e,
+            "$");
+
+    std::cout << "here : " << result << std::endl;
+    */
 }
 
 double WordConverter::getValue(const std::vector<std::string> &inputString)
 {
-    int onehundred = 100;
-    int onethousand = 1000;
     double totalValue = 0;
     double accumulated = 0;
 
