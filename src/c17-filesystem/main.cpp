@@ -17,7 +17,7 @@ int main()
             std::filesystem::copy_file(myfile, tmpPath.append("newFile"));
         }
     }
-    
+
     std::string const& inputFile = "../inputfile.txt";
     std::fstream fileStream(inputFile, std::ios::in);
     std::string fileLine;
@@ -29,9 +29,7 @@ int main()
 
     while(getline(fileStream, fileLine))
     {
-	    std::cout << "Contents:" << fileLine << std::endl; 
-            //std::vector<std::string> wordvector= insertToVector(templine);
-            //std::for_each(wordvector.begin(),wordvector.end(),[](const std::string word){std::cout<<word;}); //vector output
+        std::cout << "Contents:" << fileLine << std::endl; 
     }
 
     fileStream.close();
