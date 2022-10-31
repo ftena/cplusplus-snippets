@@ -1,4 +1,10 @@
 #include <filesystem>
+#include <fstream>
+#include <ios>
+#include <iostream>
+#include <cerrno>
+#include <cstring>
+#include <clocale>
 
 int main()
 {
@@ -11,6 +17,24 @@ int main()
             std::filesystem::copy_file(myfile, tmpPath.append("newFile"));
         }
     }
+    
+    std::string const& inputFile = "../inputfile.txt";
+    std::fstream fileStream(inputFile, std::ios::in);
+    std::string fileLine;
+
+    if(!fileStream)
+    {
+        throw std::runtime_error(inputFile + ": " + std::strerror(errno));
+    }
+
+    while(getline(fileStream, fileLine))
+    {
+	    std::cout << "Contents:" << fileLine << std::endl; 
+            //std::vector<std::string> wordvector= insertToVector(templine);
+            //std::for_each(wordvector.begin(),wordvector.end(),[](const std::string word){std::cout<<word;}); //vector output
+    }
+
+    fileStream.close();
 
     return 0;
 }
