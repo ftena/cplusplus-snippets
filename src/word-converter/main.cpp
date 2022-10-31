@@ -1,23 +1,9 @@
 #include <filesystem>
 #include <fstream>
-#include <ios>
 #include <iostream>
-#include <cerrno>
-#include <cstring>
-#include <clocale>
+#include <cstring> // for errno
 
 #include "WordConverter.h"
-
-void splitString(std::string const &inputString, std::vector<std::string> &out)
-{
-    // construct a stream from the string
-    std::stringstream stream(inputString);
- 
-    std::string str;
-    while (std::getline(stream, str, ' ')) {
-        out.push_back(str);
-    }
-}
 
 int main()
 {
@@ -33,14 +19,12 @@ int main()
 
     while(getline(fileStream, fileLine))
     {
-        std::cout << "Contents:" << fileLine << std::endl; 
+        std::cout << "input : " << fileLine << '\n';
 
         std::vector<std::string> out;
-        splitString(fileLine, out);
- 
-        for (auto &s: out) {
-            std::cout << s << '\n';
-        }
+        wordConverter.getNumbersFromString(fileLine, out);
+        std::cout << "output : " << wordConverter.getValue(out) << '\n';
+
     }
 
     fileStream.close();
