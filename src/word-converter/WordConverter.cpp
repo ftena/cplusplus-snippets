@@ -48,6 +48,20 @@ WordConverter::WordConverter(const std::string &inputString)
      {"thousand",1000},
      {"million",1000000},
      {"billion",1000000000}};
+
+    std::string expression;
+    std::string mainExpression = "(";
+    
+    for (auto const& [key, val] : textAsNumbers)
+    {
+      mainExpression.append(std::string(key + "|"));
+    }
+    
+    mainExpression.erase(mainExpression.end()-1); // erase the last |
+    mainExpression.append(")");
+    expression.append(mainExpression);
+    expression.append(".+"); 
+    expression.append(mainExpression); 
 }
 
 WordConverter::~WordConverter()
@@ -72,17 +86,16 @@ void WordConverter::getNumbersFromString(std::vector<std::string> &out)
         }
     }
 
-    /*
     std::string result;
-    std::regex e();
+    std::string expression = "(billion|eight|eighteen|eighty|eleven|fifteen|fifty|five|forty|four|fourteen|hundred|million|nine|nineteen|ninety|one|seven|seventeen|seventy|six|sixteen|sixty|ten|thirteen|thirty|thousand|three|twelve|twenty|two).+(billion|eight|eighteen|eighty|eleven|fifteen|fifty|five|forty|four|fourteen|hundred|million|nine|nineteen|ninety|one|seven|seventeen|seventy|six|sixteen|sixty|ten|thirteen|thirty|thousand|three|twelve|twenty|two)";
+    std::regex e(expression);
     std::regex_replace (std::back_inserter(result),
-            formmatedOutputString.begin(),
-            formmatedOutputString.end(),
+            in.begin(),
+            in.end(),
             e,
             "$");
-
+    
     std::cout << "here : " << result << std::endl;
-    */
 }
 
 double WordConverter::getValue(const std::vector<std::string> &inputString)
