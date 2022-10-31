@@ -13,9 +13,12 @@ public:
     void getNumbersFromString(std::vector<std::string> &out);
     double getValue(const std::vector<std::string> &inputString);
 private:
-    std::string originalInputString;
-    std::string formmatedOutputString;
-    std::map<std::string, double> textAsNumbers;
+    std::string originalInputString; // the original string
+    std::string formattedOutputString; // the string with the right format
+    std::map<std::string, double> textAsNumbers; // map with text and its value as number
+    std::string regexpression; // it stores the regex to locate the number in English
+
+    // some static characters and values
     static const char hyphen;
     static const char whitespace;
     static const char dollar;

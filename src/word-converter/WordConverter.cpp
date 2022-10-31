@@ -14,7 +14,7 @@ const int WordConverter::onethousand = 1000;
 WordConverter::WordConverter(const std::string &inputString)
 {
     originalInputString = inputString;
-    formmatedOutputString = inputString;
+    formattedOutputString = inputString;
 
     textAsNumbers =
     {{"one",1},
@@ -49,19 +49,20 @@ WordConverter::WordConverter(const std::string &inputString)
      {"million",1000000},
      {"billion",1000000000}};
 
-    std::string expression;
-    std::string mainExpression = "(";
+    // create the regular expression to locate the number in English
+    std::string coreRegex = "(";
     
     for (auto const& [key, val] : textAsNumbers)
     {
-      mainExpression.append(std::string(key + "|"));
+      coreRegex.append(std::string(key + "|"));
     }
     
-    mainExpression.erase(mainExpression.end()-1); // erase the last |
-    mainExpression.append(")");
-    expression.append(mainExpression);
-    expression.append(".+"); 
-    expression.append(mainExpression); 
+    coreRegex.erase(coreRegex.end()-1); // erase the last |
+    coreRegex.append(")");
+
+    regexpression.append(coreRegex);
+    regexpression.append(".+");
+    regexpression.append(coreRegex);
 }
 
 WordConverter::~WordConverter()
@@ -87,8 +88,7 @@ void WordConverter::getNumbersFromString(std::vector<std::string> &out)
     }
 
     std::string result;
-    std::string expression = "(billion|eight|eighteen|eighty|eleven|fifteen|fifty|five|forty|four|fourteen|hundred|million|nine|nineteen|ninety|one|seven|seventeen|seventy|six|sixteen|sixty|ten|thirteen|thirty|thousand|three|twelve|twenty|two).+(billion|eight|eighteen|eighty|eleven|fifteen|fifty|five|forty|four|fourteen|hundred|million|nine|nineteen|ninety|one|seven|seventeen|seventy|six|sixteen|sixty|ten|thirteen|thirty|thousand|three|twelve|twenty|two)";
-    std::regex e(expression);
+    std::regex e(regexpression);
     std::regex_replace (std::back_inserter(result),
             in.begin(),
             in.end(),
