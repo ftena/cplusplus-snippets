@@ -24,6 +24,7 @@ private:
     // some static characters and values
     static const char hyphen;
     static const char whitespace;
+    static const char dot;
     static const char dollar;
     static const int onehundred;
     static const int onethousand;

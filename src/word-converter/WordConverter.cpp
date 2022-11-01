@@ -7,6 +7,7 @@
 
 const char WordConverter::hyphen = '-';
 const char WordConverter::whitespace = ' ';
+const char WordConverter::dot = '.';
 const char WordConverter::dollar = '$';
 const int WordConverter::onehundred = 100;
 const int WordConverter::onethousand = 1000;
@@ -120,11 +121,15 @@ double WordConverter::getNumberValue(const std::vector<std::string> &input)
 std::string WordConverter::getFormattedString(double input)
 {
     std::string result;
+
     std::regex e("(\\$.*\\$)|(\\$)");
     std::regex_replace(std::back_inserter(result),
                        formattedString.begin(),
                        formattedString.end(),
                        e,
                        std::to_string(long(input)));
+
+    result.append(std::string(1, dot));
+
     return result;
 }

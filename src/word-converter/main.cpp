@@ -30,27 +30,46 @@ int main(int argc, char* argv[])
         }
     }
 
-    std::fstream fileStream(inputFile, std::ios::in);
-    std::string fileLine;
-
-    // check if the file exists
-    if(!fileStream)
+    // check if the input file exists
+    if(!std::filesystem::exists(inputFile))
     {
         std::cerr << usage << std::endl;
         throw std::runtime_error(inputFile + ": " + std::strerror(errno));
     }
 
+    std::fstream inputFileStream(inputFile, std::ios::in);
+
+    // if provided, check if the ouput file can be created
+    std::fstream outputFileStream;
+    if(!outputFile.empty())
+    {
+        outputFileStream.open(outputFile, std::ios::out);
+        
+        if(!std::filesystem::exists(outputFile))
+        {
+            throw std::runtime_error("Cannot create: " + outputFile); 
+        }
+    }
+
     // process lines
-    while(getline(fileStream, fileLine))
+    std::string fileLine;
+    while(getline(inputFileStream, fileLine))
     {
         std::cout << "input : " << fileLine << std::endl;
 
         WordConverter wordConverter(fileLine);
-        std::cout << "output : " << wordConverter.process() << std::endl;
+        std::string result = wordConverter.process();
+        std::cout << "output : " << result << std::endl;
 
+        // add text to the output file
+        if(!outputFile.empty())
+        {
+            outputFileStream << result << '\n'; 
+        }
     }
 
-    fileStream.close();
+    inputFileStream.close();
+    outputFileStream.close();
 
     return 0;
 }
