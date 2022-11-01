@@ -66,16 +66,15 @@ std::string WordConverter::process()
 
 void WordConverter::extractNumber(std::vector<std::string> &out)
 {
-    std::string in = inputString;
     std::string formatted;
-    in.erase(in.end()-1); // erase the last dot
+    inputString.erase(inputString.end()-1); // erase the last dot
 
-    // replace hyphen (-) character if they are used
-    std::replace(in.begin(), in.end(), hyphen, whitespace);
+    // replace hyphen (-) character if they are used (i.e. seventy-three)
+    std::replace(inputString.begin(), inputString.end(), hyphen, whitespace);
 
-    std::stringstream stream(in); // get the string as a stream
+    std::stringstream stream(inputString); // get the string as a stream
 
-    formatted = in;
+    formatted = inputString;
 
     std::string str;
     while (std::getline(stream, str, ' '))
@@ -99,7 +98,8 @@ double WordConverter::getNumberValue(const std::vector<std::string> &input)
     double totalValue = 0;
     double accumulated = 0;
 
-    for (auto &text: input) {
+    for (auto &text: input)
+    {
         double currentValue = textAsNumbers[text];
 
         if (currentValue >= onethousand)
