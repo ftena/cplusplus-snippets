@@ -72,6 +72,7 @@ WordConverter::~WordConverter()
 void WordConverter::getNumbersFromString(std::vector<std::string> &out)
 {
     std::string in = originalInputString;
+    std::string formatted;
     in.erase(in.end()-1); // erase the last dot
 
     // replace hyphen (-) character if they are used
@@ -79,23 +80,24 @@ void WordConverter::getNumbersFromString(std::vector<std::string> &out)
 
     std::stringstream stream(in); // get the string as a stream
 
+    formatted = in;
+
     std::string str;
-    while (std::getline(stream, str, ' ')) {
-        if(textAsNumbers.find(str) != textAsNumbers.end()) {
+    while (std::getline(stream, str, ' '))
+    {
+        if(textAsNumbers.find(str) != textAsNumbers.end())
+        {
             out.push_back(str);
 
+            std::regex e(str);
+            formatted = std::regex_replace(formatted,
+                                           e,
+                                           std::string(1, dollar));
         }
     }
 
-    std::string result;
-    std::regex e(regexpression);
-    std::regex_replace (std::back_inserter(result),
-            in.begin(),
-            in.end(),
-            e,
-            "$");
-    
-    std::cout << "here : " << result << std::endl;
+    formattedOutputString = formatted;
+  
 }
 
 double WordConverter::getValue(const std::vector<std::string> &inputString)
@@ -117,6 +119,15 @@ double WordConverter::getValue(const std::vector<std::string> &inputString)
         }
         else accumulated += currentValue;
     }
+
+    std::string result;
+    std::regex e("(\\$.*\\$)|(\\$)");
+    std::regex_replace(std::back_inserter(result),
+                       formattedOutputString.begin(),
+                       formattedOutputString.end(),
+                       e,
+                       std::to_string(long(totalValue + accumulated)));
+    std::cout << "here: " << result << std::endl;
 
     return totalValue + accumulated;
 }
