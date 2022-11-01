@@ -21,6 +21,12 @@ make -j 4
 ./word_converter -i <input_file> [-o <output_file>]
 ```
 
+Example:
+
+```sh
+./word_converter -i ../inputfile.txt -o ../outputfile.txt
+```
+
 # High-level guidelines about the implemented solution
 
 - Based on C++17 to use `std::filesystem`

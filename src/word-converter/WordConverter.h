@@ -17,7 +17,6 @@ private:
     std::string getFormattedString(double input);
 
     std::string inputString; // the original string used as input
-    std::string formattedString; // the string formatted with the right format
     std::map<std::string, double> textAsNumbers; // map with text and its value as number
     std::string regexpression; // it stores the regex to locate the number in English (TODO)
 

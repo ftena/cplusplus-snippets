@@ -15,7 +15,6 @@ const int WordConverter::onethousand = 1000;
 WordConverter::WordConverter(const std::string &input)
 {
     inputString = input;
-    formattedString = input;
 
     textAsNumbers =
     {{"one",1},
@@ -85,13 +84,11 @@ void WordConverter::extractNumber(std::vector<std::string> &out)
             out.push_back(str);
 
             std::regex e(str);
-            formatted = std::regex_replace(formatted,
+            inputString = std::regex_replace(inputString,
                                            e,
                                            std::string(1, dollar));
         }
     }
-
-    formattedString = formatted;
 }
 
 double WordConverter::getNumberValue(const std::vector<std::string> &input)
@@ -122,14 +119,15 @@ std::string WordConverter::getFormattedString(double input)
 {
     std::string result;
 
+    // replace dollar signs by the calculated value
     std::regex e("(\\$.*\\$)|(\\$)");
     std::regex_replace(std::back_inserter(result),
-                       formattedString.begin(),
-                       formattedString.end(),
+                       inputString.begin(),
+                       inputString.end(),
                        e,
                        std::to_string(long(input)));
 
-    result.append(std::string(1, dot));
+    result.append(std::string(1, dot)); // restore the last dot
 
     return result;
 }
