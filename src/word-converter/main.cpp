@@ -46,9 +46,7 @@ int main(int argc, char* argv[])
         std::cout << "input : " << fileLine << std::endl;
 
         WordConverter wordConverter(fileLine);
-        std::vector<std::string> out;
-        wordConverter.getNumbersFromString(out);
-        std::cout << "output : " << wordConverter.getValue(out) << '\n';
+        std::cout << "output : " << wordConverter.process() << std::endl;
 
     }
 

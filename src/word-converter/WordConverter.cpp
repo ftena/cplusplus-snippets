@@ -11,10 +11,10 @@ const char WordConverter::dollar = '$';
 const int WordConverter::onehundred = 100;
 const int WordConverter::onethousand = 1000;
 
-WordConverter::WordConverter(const std::string &inputString)
+WordConverter::WordConverter(const std::string &input)
 {
-    originalInputString = inputString;
-    formattedOutputString = inputString;
+    inputString = input;
+    formattedString = input;
 
     textAsNumbers =
     {{"one",1},
@@ -48,30 +48,25 @@ WordConverter::WordConverter(const std::string &inputString)
      {"thousand",1000},
      {"million",1000000},
      {"billion",1000000000}};
-
-    // create the regular expression to locate the number in English
-    std::string coreRegex = "(";
-    
-    for (auto const& [key, val] : textAsNumbers)
-    {
-      coreRegex.append(std::string(key + "|"));
-    }
-    
-    coreRegex.erase(coreRegex.end()-1); // erase the last |
-    coreRegex.append(")");
-
-    regexpression.append(coreRegex);
-    regexpression.append(".+");
-    regexpression.append(coreRegex);
 }
 
 WordConverter::~WordConverter()
 {
 }
 
-void WordConverter::getNumbersFromString(std::vector<std::string> &out)
+std::string WordConverter::process()
 {
-    std::string in = originalInputString;
+    std::vector<std::string> out;
+    double numberValue;
+
+    extractNumber(out);
+    numberValue = getNumberValue(out);
+    return getFormattedString(numberValue);
+}
+
+void WordConverter::extractNumber(std::vector<std::string> &out)
+{
+    std::string in = inputString;
     std::string formatted;
     in.erase(in.end()-1); // erase the last dot
 
@@ -96,16 +91,15 @@ void WordConverter::getNumbersFromString(std::vector<std::string> &out)
         }
     }
 
-    formattedOutputString = formatted;
-  
+    formattedString = formatted;
 }
 
-double WordConverter::getValue(const std::vector<std::string> &inputString)
+double WordConverter::getNumberValue(const std::vector<std::string> &input)
 {
     double totalValue = 0;
     double accumulated = 0;
 
-    for (auto &text: inputString) {
+    for (auto &text: input) {
         double currentValue = textAsNumbers[text];
 
         if (currentValue >= onethousand)
@@ -120,14 +114,17 @@ double WordConverter::getValue(const std::vector<std::string> &inputString)
         else accumulated += currentValue;
     }
 
+    return totalValue + accumulated;
+}
+
+std::string WordConverter::getFormattedString(double input)
+{
     std::string result;
     std::regex e("(\\$.*\\$)|(\\$)");
     std::regex_replace(std::back_inserter(result),
-                       formattedOutputString.begin(),
-                       formattedOutputString.end(),
+                       formattedString.begin(),
+                       formattedString.end(),
                        e,
-                       std::to_string(long(totalValue + accumulated)));
-    std::cout << "here: " << result << std::endl;
-
-    return totalValue + accumulated;
+                       std::to_string(long(input)));
+    return result;
 }

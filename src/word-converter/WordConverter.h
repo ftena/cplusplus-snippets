@@ -8,15 +8,18 @@
 class WordConverter
 {
 public:
-    WordConverter(const std::string &inputString);
+    WordConverter(const std::string &input);
     ~WordConverter();
-    void getNumbersFromString(std::vector<std::string> &out);
-    double getValue(const std::vector<std::string> &inputString);
+    std::string process();
 private:
-    std::string originalInputString; // the original string
-    std::string formattedOutputString; // the string with the right format
+    void extractNumber(std::vector<std::string> &out);
+    double getNumberValue(const std::vector<std::string> &input);
+    std::string getFormattedString(double input);
+
+    std::string inputString; // the original string used as input
+    std::string formattedString; // the string formatted with the right format
     std::map<std::string, double> textAsNumbers; // map with text and its value as number
-    std::string regexpression; // it stores the regex to locate the number in English
+    std::string regexpression; // it stores the regex to locate the number in English (TODO)
 
     // some static characters and values
     static const char hyphen;
