@@ -12,9 +12,10 @@ int main()
     Subscriber s(2.5);
     Publisher p;
 
-    p.sendMessage("first message", std::bind(&Subscriber::receiveData, r.get(), _1));
-    p.sendMessage("second message", std::bind(&Subscriber::receiveData, &s, _1));
-    p.sendMessageWithValue("third message & value", 47, std::bind(&Subscriber::receiveDataWithValue, &s, _1, _2));
+    p.sendMessage("this text is like _1 in the code", std::bind(&Subscriber::receiveData, r.get(), _1));
+    p.sendMessage("this text won't be displayed; hoooray instead", std::bind(&Subscriber::receiveData, r.get(), "hoooray"));
+    p.sendMessage("this text is like _1 in the code also", std::bind(&Subscriber::receiveData, &s, _1));
+    p.sendMessageWithValue("third message and value", 47, std::bind(&Subscriber::receiveDataWithValue, &s, _1, _2));
     p.sendMessageWithValue("xxx", 0, std::bind(&Subscriber::receiveDataWithValue, &s, "fixed!", 999));
 
     // update float value
