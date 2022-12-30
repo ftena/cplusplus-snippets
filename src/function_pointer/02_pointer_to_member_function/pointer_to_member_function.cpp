@@ -24,8 +24,8 @@ public:
 
 int main()
 {
-    // i.e. a type `f_C_int` representing a pointer to member function of `C`
-    // taking int returning int is:
+    // i.e. a type `f_C_int_t` representing a pointer to member function of `C`
+    // taking int and returning int is:
     typedef int (C::*f_C_int_t) (int x) const;
 
     // The type of C_foo_p is a pointer to member function of C taking int returning int
@@ -47,6 +47,4 @@ int main()
     // a last example (without const function)
     int (C::*C_bar_p) (int) = &C::bar;
     std::cout << (myPointerToC->*C_bar_p)(10) << std::endl; // 10
-
-
 }

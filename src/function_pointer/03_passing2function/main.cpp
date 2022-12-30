@@ -2,7 +2,7 @@
 
 int passingPointer(int (*pointerToFunction) (int))
 {
-    (*pointerToFunction)(5);
+    return (*pointerToFunction)(5);
 }
 
 int doSomething(int i) {
@@ -13,7 +13,7 @@ int doSomething(int i) {
 
 int main()
 {
-    std::cout << "value in main() = " << passingPointer(&doSomething) << std::endl;
+    std::cout << "main() = " << passingPointer(&doSomething) << std::endl;
 
     return 0;
 }
