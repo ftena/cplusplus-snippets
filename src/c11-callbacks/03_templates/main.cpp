@@ -4,6 +4,7 @@
  */
 
 #include <iostream>
+#include <functional>
 #include <memory>
 
 template<class R, class T>

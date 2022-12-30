@@ -1,4 +1,5 @@
 #include <iostream>
+#include <functional>
 #include <memory>
 #include "publisher.h"
 #include "subscriber.h"
