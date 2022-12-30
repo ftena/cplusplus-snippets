@@ -11,6 +11,6 @@ For example:
         $ make sort
         $ make time
 
-* Some snippets have a makefile and should be used to compile the code.
+* Some snippets have a makefile and it should be used to compile the code.
 * Use cmake if available
  
