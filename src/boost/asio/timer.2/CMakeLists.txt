@@ -10,9 +10,7 @@ SET( SOURCES
 )
 
 ## executable
-ADD_EXECUTABLE( ${APP_NAME} ${SOURCES} )
+add_executable( ${APP_NAME} ${SOURCES} )
 
 ## link
-TARGET_LINK_LIBRARIES( ${APP_NAME} ${LIBS} )
-
-
+target_link_libraries( ${APP_NAME} PRIVATE ${LIBS} )

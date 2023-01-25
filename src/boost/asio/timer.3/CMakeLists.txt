@@ -13,6 +13,4 @@ SET( SOURCES
 add_executable( ${APP_NAME} ${SOURCES} )
 
 ## link
-target_link_libraries( ${APP_NAME} ${LIBS} )
-
-
+target_link_libraries( ${APP_NAME} PRIVATE ${LIBS} )
