@@ -10,8 +10,10 @@
 
 #include <iostream>
 #include <boost/asio.hpp>
-#include <boost/bind.hpp>
+#include <boost/bind/bind.hpp>
 #include <boost/date_time/posix_time/posix_time.hpp>
+
+using namespace boost::placeholders;
 
 void print(const boost::system::error_code& /*e*/,
     boost::asio::deadline_timer* t, int* count)

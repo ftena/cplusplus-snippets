@@ -1,6 +1,7 @@
 add_subdirectory(bind)
 add_subdirectory(bind1st_2nd)
 add_subdirectory(bits)
+add_subdirectory(boost)
 
 add_executable(ascii ascii.cpp)
 add_executable(bool bool.cpp)
