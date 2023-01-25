@@ -27,8 +27,8 @@ int main (int argc, char *argv[])
   cout << c << endl;
   cout << s << endl;  
 
-  funcion(10,20,c);
-  funcion2(s);
+  function(10,20,c);
+  function2(s);
 
   char t = '0';
 
@@ -37,6 +37,4 @@ int main (int argc, char *argv[])
   bool b = t;
 
   cout << "bool: " << b << endl;
-
-  sleep(10000);
 }

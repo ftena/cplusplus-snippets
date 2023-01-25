@@ -1,6 +1,7 @@
 #pragma once
 
-#include <DataMessage.h>
+#include <cstdint>
+#include "DataMessage.h"
 
 class Data {
 public:
