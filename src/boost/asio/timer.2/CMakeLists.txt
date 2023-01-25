@@ -1,4 +1,3 @@
-## application name
 SET( APP_NAME "asio-timer2")
 
 SET( LIBS
