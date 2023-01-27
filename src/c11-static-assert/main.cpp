@@ -16,7 +16,8 @@ class Vector {
 int main()
 {
     Vector<int, 4> four; // This will work
-    Vector<short, 2> two; // This will fail
+    // Vector<short, 2> two; // This will fail
+    // ^ TRY TO CHANGE THIS
 
     return 0;
 }

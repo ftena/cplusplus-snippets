@@ -1,6 +1,10 @@
-cmake_minimum_required(VERSION 3.13)
-project(c17-filesystem LANGUAGES CXX)
+set(APP_NAME "c17-filesystem")
+
 aux_source_directory(. SRC_LIST)
-add_executable(${PROJECT_NAME} ${SRC_LIST})
-target_link_libraries(${PROJECT_NAME} stdc++fs)
-set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 17)
+add_executable(${APP_NAME} ${SRC_LIST})
+target_link_libraries(${APP_NAME} stdc++fs)
+
+set_property(TARGET ${APP_NAME} PROPERTY CXX_STANDARD 17)
+
+# another way:
+# target_compile_features(${APP_NAME} PRIVATE cxx_std_17)
