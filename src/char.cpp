@@ -4,7 +4,7 @@
 
 using namespace std;
 
-int function (int id, int p, char t[5])
+void function (int id, int p, char t[5])
 {
    //char tmp[5];
    
@@ -13,7 +13,7 @@ int function (int id, int p, char t[5])
    cout << id << " " << p << " " << t << endl;
 }
 
-int function2 (string s)
+void function2 (string s)
 {   
    cout << s << endl;
 }

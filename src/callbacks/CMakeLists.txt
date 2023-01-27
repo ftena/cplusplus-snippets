@@ -1,5 +1,3 @@
-project(callbacks)
-cmake_minimum_required(VERSION 2.8)
 add_subdirectory(01_functions)
 add_subdirectory(02_pointer_to_member_function)
 add_subdirectory(03_members)

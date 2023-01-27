@@ -10,6 +10,8 @@ add_subdirectory(c11-variadic-templates)
 add_subdirectory(c17-filesystem)
 add_subdirectory(c17-std-any)
 add_subdirectory(c20-concepts)
+add_subdirectory(callbacks)
+add_subdirectory(chrono)
 
 add_executable(ascii ascii.cpp)
 add_executable(bool bool.cpp)
