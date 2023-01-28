@@ -16,18 +16,14 @@ class myclass
 
 		void f()
 		{
-
 			try {
 				throw myexception();
 			} catch (myexception& m) {
-				cout << "Exception in myclass. Se lanza de nuevo la excepción" << endl;
+				cout << "Exception in myclass. The exception is thrown again!" << endl;
 				throw;
-				cout << "Aquí no se llega" << endl;
+				cout << "Never here!" << endl;
 			}		
-
-			
 		}
- 
 };
 
 #endif

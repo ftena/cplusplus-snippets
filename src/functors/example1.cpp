@@ -1,9 +1,9 @@
 #include <iostream>
  
-class myFunctorClass
+class MyFunctorClass
 {
     public:
-        myFunctorClass (int x) : _x( x ) {}
+        MyFunctorClass (int x) : _x( x ) {}
         int operator() (int y) { return _x + y; }
     private:
         int _x;
@@ -11,7 +11,7 @@ class myFunctorClass
  
 int main()
 {
-    myFunctorClass addFive( 5 );
+    MyFunctorClass addFive( 5 );
     std::cout << addFive( 3 ) << std::endl;
     std::cout << addFive( 1 ) << std::endl;
  

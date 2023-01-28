@@ -7,12 +7,12 @@
 int main(int argc, char *argv[])
 {
 
-	setlocale (LC_ALL, "");
-  bindtextdomain (PACKAGE, LOCALEDIR);
-  textdomain (PACKAGE);
+  setlocale(LC_ALL, "");
+  bindtextdomain(PACKAGE, LOCALEDIR);
+  textdomain(PACKAGE);
 
-printf( "msg: \"%s\".\n", gettext( "starting a new test" ) );
-  printf( "msg: \"%s\".\n", gettext( "testing i18n" ) );
+  printf("msg: \"%s\".\n", gettext("starting a new test"));
+  printf("msg: \"%s\".\n", gettext("testing i18n"));
 
-	return 0;
+  return 0;
 }
