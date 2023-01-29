@@ -1,9 +1,8 @@
 /*
-	Structural Patterns
-	
-	Adapter
-
-	Convert the interface of a class into another interface that clients expect. Adapter lets classes work together that couldn't otherwise because of incompatible interfaces.
+* Structural Patterns
+* Adapter
+* Convert the interface of a class into another interface that clients expect.
+* Adapter lets classes work together that couldn't otherwise because of incompatible interfaces.
 */
 
 #include <iostream>
@@ -17,12 +16,12 @@ struct MuslimFemale : public Muslim {  // Concrete Target
 	void performsMuslimRitual() {std::cout << "Muslim girl performs Muslim ritual." << std::endl;}
 };
 
-struct Hindu {  // Abstract Adaptee
+struct Hindu {  // Abstract Adapter
 	virtual ~Hindu() {}
 	virtual void performsHinduRitual() = 0;
 };
 
-struct HinduFemale : public Hindu {  // Concrete Adaptee
+struct HinduFemale : public Hindu {  // Concrete Adapter
 	void performsHinduRitual() {std::cout << "Hindu girl performs Hindu ritual." << std::endl;}
 };
 
@@ -49,8 +48,8 @@ int main() {  // Client code
 	MuslimAdapter* adaptedHindu = new MuslimAdapter (hinduGirl);  // hinduGirl has adapted to become a Muslim!
 
 	muslimRitual.carryOutRitual (muslimGirl);
-	muslimRitual.carryOutRitual (adaptedHindu);  // So now hinduGirl, in the form of adaptedHindu, participates in the muslimRitual!
-																// Note that hinduGirl is carrying out her own type of ritual in muslimRitual though.
+	muslimRitual.carryOutRitual (adaptedHindu); // So now hinduGirl, in the form of adaptedHindu, participates in the muslimRitual!
+												// Note that hinduGirl is carrying out her own type of ritual in muslimRitual though.
 
 	delete adaptedHindu;  // adaptedHindu is not needed anymore
 }

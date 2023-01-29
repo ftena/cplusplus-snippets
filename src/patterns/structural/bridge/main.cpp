@@ -1,10 +1,8 @@
 /*
-	Structural Patterns
-
-	Bridge
-
-	The Bridge Pattern is used to separate out the interface from its implementation. Doing this gives the flexibility so that both can vary independently.
-
+* Structural Patterns
+* Bridge
+* The Bridge Pattern is used to separate out the interface from its implementation.
+* Doing this gives the flexibility so that both can vary independently.
 */
 
 #include <iostream>
