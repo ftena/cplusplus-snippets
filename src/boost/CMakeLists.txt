@@ -17,3 +17,5 @@ add_subdirectory(circular_buffer)
 add_subdirectory(multi_index)
 
 add_subdirectory(program_options)
+
+add_subdirectory(ptr_vector)
