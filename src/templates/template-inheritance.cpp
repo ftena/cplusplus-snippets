@@ -50,13 +50,13 @@ T Stack<T>::top () const
 //template <class T>
 class IntStack: public Stack<int> {
 	public:
-		IntStack(): Stack<int> () {};
+		IntStack(): Stack<int>() {};
 };
 
 template <class T>
 class StringStack: public Stack<string> {
 	public:
-		StringStack(): Stack<string> (T value): value(value) {};
+		StringStack(T value): Stack<string>(), value(value) {}
 	private:
 		T value;
 };
