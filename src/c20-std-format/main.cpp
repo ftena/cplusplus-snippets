@@ -19,8 +19,8 @@ size_t MaxKeyLength(const std::map<std::string, T>& m) {
 int main()
 {
 	// a map of data
-	constexpr size_t ROWS = 5;
-	const std::map<std::string, std::array<double, ROWS>> productToOrders{
+	constexpr size_t Rows = 5;
+	const std::map<std::string, std::array<double, Rows>> productToOrders{
 		{"apples", {100, 200, 50.5, 30, 10}},
 		{"bananas", {80, 10, 100, 120, 70}},
 		{"carrots", {130, 75, 25, 64.5, 128}},
