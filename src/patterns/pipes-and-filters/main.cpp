@@ -21,9 +21,8 @@ int main() {
 
     auto vec = std::views::iota(1'000) | std::views::filter(odd)           // (1)
                                        | std::views::filter(isPrime)       // (2)
-                                       | std::views::take(10)              // (3)
-                                       | std::ranges::to<std::vector>();   // (4)
+                                       | std::views::take(10);             // (3)
+                                       // | std::ranges::to<std::vector>();   // (4) - with C++23
 
     for (auto v: vec) std::cout << v << " ";
-
 }
