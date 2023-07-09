@@ -1,4 +1,5 @@
 add_subdirectory(algorithms/init-and-transform)
+add_subdirectory(algorithms/init-and-transform-paralell-execution)
 add_subdirectory(bind)
 add_subdirectory(bind1st_2nd)
 add_subdirectory(bits)
