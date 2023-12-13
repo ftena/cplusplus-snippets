@@ -108,6 +108,8 @@ int main(int argc, char** argv)
 		std::cout << "Get value using reinterpret_cast = " << *reinterpret_cast<float*>(&uInt) << std::endl;
 
 		std::cout << std::endl;
+
+		delete[] _byteBuffer;
 	}
 
 	// Packing and unpacking a float	(second version)
@@ -174,10 +176,10 @@ int main(int argc, char** argv)
 
 		unsigned int dword;
 
-		((uint8_t*)&dword)[0] = (_byteBuffer[0]);
-		((uint8_t*)&dword)[1] = (_byteBuffer[1]);
-		((uint8_t*)&dword)[2] = (_byteBuffer[2]);
-		((uint8_t*)&dword)[3] = (_byteBuffer[3]);
+		((uint8_t*)&dword)[0] = ((uint8_t)_byteBuffer[0]);
+		((uint8_t*)&dword)[1] = ((uint8_t)_byteBuffer[1]);
+		((uint8_t*)&dword)[2] = ((uint8_t)_byteBuffer[2]);
+		((uint8_t*)&dword)[3] = ((uint8_t)_byteBuffer[3]);
 	
 		std::cout << "Second version - dword = " << dword << std::endl;
 		memcpy (&result, &dword, length);
@@ -186,6 +188,7 @@ int main(int argc, char** argv)
 		std::cout << "Get value using casting = " << *(float*)(&dword) << std::endl;
 
 		std::cout << std::endl;
+		delete[] _byteBuffer;
 	}
 
 	return 0;
