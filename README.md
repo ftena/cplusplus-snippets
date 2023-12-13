@@ -11,4 +11,4 @@ You can compile most of snippets using CMake.
 
 ## Notes
 
-Some code requires the boost libraries, so it's necessary to have the `BOOST_ROOT` environment variable defined in the system.
+Some code requires the [boost libraries](https://www.boost.org/doc/libs/1_83_0/more/getting_started/unix-variants.html), so it's necessary to have the `BOOST_ROOT` environment variable defined in the system.
