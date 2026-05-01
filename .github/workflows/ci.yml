@@ -18,7 +18,7 @@ jobs:
           conan config install conan_profiles
           mkdir build
           cd build
-          conan install .. -pr=gcc11_cxx17_release -pr:b=gcc11_cxx17_release --output-folder .
+          conan install .. --build=missing -pr=gcc11_cxx17_release -pr:b=gcc11_cxx17_release --output-folder .
 
       - name: Configure CMake
         run: |
